@@ -11,7 +11,7 @@ vim.keymap.set('v', '<leader>y', '"+y')
 vim.keymap.set('n', 'Q', '<nop>')
 
 -- terminal
-vim.keymap.set('n', '<leader>t', ':terminal <CR>')
+vim.keymap.set('n', '<leader>t', ':term<CR>')
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 
 -- nice additions
