@@ -9,9 +9,9 @@ alias apps='cd ~/.local/share/applications/'
 alias louis='ssh anton@192.168.178.48'
 
 # LS
-alias ls='lsd'
-alias la='lsd -a'
-alias ll='lsd -l'
+alias ls='ls --color=always -F'
+alias la='ls -a'
+alias ll='ls -l'
 
 # WG
 alias wgon='wg-quick up ~/Downloads/wg0.conf'
