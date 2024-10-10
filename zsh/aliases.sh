@@ -16,3 +16,6 @@ alias ll='ls -l'
 # WG
 alias wgon='wg-quick up ~/Downloads/wg0.conf'
 alias wgoff='wg-quick down ~/Downloads/wg0.conf'
+
+# nvim
+nv() { neovide $1 & }

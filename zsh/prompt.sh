@@ -8,7 +8,12 @@ update_prompt() {
 		# PROMPT+="%{$fg[yellow]%}$(git remote show | head -n 1)"
 		# PROMPT+="%{$fg_bold[magenta] $(git_repo_name)"
 		# PROMPT+="%{$fg_bold[blue]($(git_current_branch))%{$fg[white]%}:"
-		PROMPT+="%{$fg[yellow]%}$(git remote show | head -n 1) %{$fg_bold[magenta]%}$(git_repo_name)%{$fg_bold[blue]%}($(git_current_branch))%{$fg[white]%}:"
+		if [[ -n "$(git remote show)" ]]; then
+			PROMPT+="%{$fg[yellow]%}$(git remote show | head -n 1)"
+		else
+			PROMPT+="%{$fg_bold[red]%}NO-REMOTE"
+		fi
+		PROMPT+=" %{$fg_bold[magenta]%}$(git_repo_name)%{$fg_bold[blue]%}($(git_current_branch))%{$fg[white]%}:"
 
 	fi
 

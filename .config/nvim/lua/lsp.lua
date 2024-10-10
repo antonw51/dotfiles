@@ -114,31 +114,13 @@ cmp.setup({
 
 			return kind
 		end,
-
-		-- format = function(entry, vim_item)
-		-- 	-- Kind icons
-		-- 	vim_item.kind = string.format('%s %s ', cmp_kind_icons[vim_item.kind], vim_item.kind)
-		--
-		-- 	return vim_item
-		-- end,
-
-		-- format = function(entry, item)
-		--     local menu_icon = {
-		--         nvim_lsp = 'λ',
-		--         luasnip = '⋗',
-		--         buffer = 'Ω',
-		--         path = '🖫',
-		--     }
-
-		--     item.menu = menu_icon[entry.source.name]
-		--     return item
-		-- end
 	},
 })
 
 -- #region Highlight groups
 
 -- Customization for Pmenu
+
 vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#282C34', fg = 'NONE' })
 vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#C5CDD9', bg = '#22252A' })
 
@@ -151,9 +133,9 @@ vim.api.nvim_set_hl(0, 'CmpItemKindField', { fg = '#EED8DA', bg = '#B5585F' })
 vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { fg = '#EED8DA', bg = '#B5585F' })
 vim.api.nvim_set_hl(0, 'CmpItemKindEvent', { fg = '#EED8DA', bg = '#B5585F' })
 
-vim.api.nvim_set_hl(0, 'CmpItemKindText', { fg = '#e2f3c9', bg = '#94c549' })
-vim.api.nvim_set_hl(0, 'CmpItemKindEnum', { fg = '#e2f3c9', bg = '#94c549' })
-vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { fg = '#e2f3c9', bg = '#94c549' })
+vim.api.nvim_set_hl(0, 'CmpItemKindText', { fg = '#C3E88D', bg = '#9FBD73' })
+vim.api.nvim_set_hl(0, 'CmpItemKindEnum', { fg = '#C3E88D', bg = '#9FBD73' })
+vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { fg = '#C3E88D', bg = '#9FBD73' })
 
 vim.api.nvim_set_hl(0, 'CmpItemKindConstant', { fg = '#FFE082', bg = '#D4BB6C' })
 vim.api.nvim_set_hl(0, 'CmpItemKindConstructor', { fg = '#FFE082', bg = '#D4BB6C' })
@@ -168,9 +150,9 @@ vim.api.nvim_set_hl(0, 'CmpItemKindOperator', { fg = '#EADFF0', bg = '#A377BF' }
 vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { fg = '#C5CDD9', bg = '#7E8294' })
 vim.api.nvim_set_hl(0, 'CmpItemKindFile', { fg = '#C5CDD9', bg = '#7E8294' })
 
-vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { fg = '#F5EBD9', bg = '#D29a32' })
-vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { fg = '#F5EBD9', bg = '#D29a32' })
-vim.api.nvim_set_hl(0, 'CmpItemKindFolder', { fg = '#F5EBD9', bg = '#D29a32' })
+vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { fg = '#F5EBD9', bg = '#D4A959' })
+vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { fg = '#F5EBD9', bg = '#D4A959' })
+vim.api.nvim_set_hl(0, 'CmpItemKindFolder', { fg = '#F5EBD9', bg = '#D4A959' })
 
 vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { fg = '#DDE5F5', bg = '#6C8ED4' })
 vim.api.nvim_set_hl(0, 'CmpItemKindValue', { fg = '#DDE5F5', bg = '#6C8ED4' })

@@ -60,10 +60,13 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # start an app
-bindsym $mod+n exec kitty -- ldesk && exit
+bindsym $mod+n exec kitty -- fzf-launcher && exit
 
 # kill focused window
 bindsym $mod+q kill
+
+# Enable compose key with caps lock
+exec setxkbmap -option compose:caps
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run

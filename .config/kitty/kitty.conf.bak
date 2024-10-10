@@ -6,10 +6,10 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      JetBrainsMonoNL NFM Regular
-# bold_font        auto
-# italic_font      auto
-# bold_italic_font auto
+font_family      JetBrains Mono Regular
+bold_font        JetBrains Mono Bold
+italic_font      JetBrains Mono Italic
+bold_italic_font JetBrains Mono Bold Italic
 
 #: You can specify different fonts for the bold/italic/bold-italic
 #: variants. To get a full list of supported fonts use the `kitty
@@ -24,7 +24,7 @@ font_family      JetBrainsMonoNL NFM Regular
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 12.0
+font_size 12
 
 #: Font size (in pts).
 
@@ -302,7 +302,7 @@ cursor_blink_interval 0.5
 #: disable blinking. Negative values mean use system default. Note
 #: that the minimum interval will be limited to repaint_delay.
 
-# cursor_stop_blinking_after 15.0
+cursor_stop_blinking_after 10.0
 
 #: Stop blinking cursor after the specified number of seconds of
 #: keyboard inactivity. Set to zero to never stop blinking.
@@ -734,7 +734,7 @@ cursor_blink_interval 0.5
 
 #: Terminal bell {{{
 
-# enable_audio_bell yes
+enable_audio_bell no
 
 #: The audio bell. Useful to disable it in environments that require
 #: silence.
@@ -2527,3 +2527,9 @@ cursor_blink_interval 0.5
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_THEME
+# Monokai Pro (Filter Spectrum)
+include current-theme.conf
+# END_KITTY_THEME

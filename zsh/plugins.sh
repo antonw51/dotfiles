@@ -13,5 +13,4 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit snippet OMZP::colored-man-pages
 zinit snippet OMZP::sudo
 zinit snippet OMZP::git
-zinit snippet OMZ::lib/git.zsh
 

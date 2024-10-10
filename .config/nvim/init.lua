@@ -17,18 +17,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require('BluePlum.set')
 require('BluePlum.keymap')
-
--- Lualine filename
-local function hello()
-	return [[hello world]]
-end
+require('BluePlum.neovide')
+require('BluePlum.utility')
 
 require('lazy').setup({
 	-- Plugins
 	spec = {
 		{ import = 'plugins' },
 	},
-	checker = { enabled = true },
+	checker = { enabled = false },
+	change_detection = { notify = false },
 })
 
 require('lsp')

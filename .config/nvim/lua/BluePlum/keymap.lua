@@ -25,3 +25,39 @@ vim.keymap.set('n', '<leader>l', ':e#<CR>')
 vim.keymap.set('n', '<leader>i', 'cc')
 -- peek
 vim.keymap.set('n', '<leader>p', vim.lsp.buf.hover)
+
+-- Scratch pad
+vim.keymap.set(
+	'n',
+	'<leader>s',
+	':bo vs<CR>:enew<CR>:setlocal noswapfile<CR>:setlocal bufhidden=hide<CR>:setlocal buftype=nofile<CR>:set filetype=markdown<CR>:set syntax=markdown<CR>'
+)
+
+-- Help
+vim.cmd.cnoreabbrev('h vert h')
+
+-- Windows
+vim.keymap.set('n', '<leader>k', function()
+	if vim.bo.modified then
+		if Confirm('Buffer has unsaved changes; write?') then
+			vim.cmd.write()
+			vim.cmd.bdelete()
+		else
+			vim.cmd('bd!')
+		end
+	else
+		vim.cmd.bdelete()
+	end
+end)
+
+-- Comp mode
+vim.keymap.set('n', '<leader>s', function() -- s: start
+	local command = Input('Enter compilation command > ', vim.g.last_compile_command)
+	if command then
+		vim.g.last_compile_command = command
+		vim.cmd.Compile(command)
+	end
+end)
+
+vim.keymap.set('n', '<leader>E', ':NextError<CR>')
+vim.keymap.set('n', '<leader>S', ':Recompile<CR>')

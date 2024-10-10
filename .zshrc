@@ -46,3 +46,6 @@ zinit ice wait'!0'
 
 # source ${ZINIT_HOME}/../plugins/marlonrichert---zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # zstyle ':autocomplete:*' delay 0.1  # seconds (float)
+
+# Created by `pipx` on 2024-08-28 16:28:46
+export PATH="$PATH:/home/anton/.local/bin"

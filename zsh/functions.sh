@@ -31,3 +31,22 @@ split() {
 	(kitty . &)
 }
 
+APPLETS=("svelte" "react" "vite")
+
+declare -A KNOWN_APPLETS=(
+	["svelte"]="npm create svelte@latest"
+	["react"]="npx create-next-app@latest"
+	["vite"]="npm create vite@latest"
+)
+
+create() {
+	if [[ -n "$KNOWN_APPLETS[$1]" ]]; then
+		eval "$KNOWN_APPLETS[$1]"
+	else
+		echo "$fg[red]FATAL:$fg[white] I don't know that applet"
+		echo "USAGE: create <applet>"
+		echo "APPLETS:"
+		echo "    $APPLETS"
+		return 64
+	fi
+}
