@@ -1,5 +1,3 @@
-vim = vim
-
 local required = { 'mason', 'mason-lspconfig', 'lspconfig', 'lsp-zero', 'cmp' }
 local ready = true
 
@@ -24,8 +22,21 @@ vim.cmd.echohl('None')
 local zero = require('lsp-zero')
 
 zero.preset('recommended')
-
 require('mason').setup({})
+
+local settings = {
+	['lua_ls'] = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+			},
+			workspace = {
+				library = { vim.env.VIMRUNTIME },
+			},
+		},
+	},
+}
+
 require('mason-lspconfig').setup({
 	ensure_installed = {
 		'lua_ls',
@@ -34,6 +45,7 @@ require('mason-lspconfig').setup({
 		-- zero.default_setup,
 		function(name)
 			require('lspconfig')[name].setup({
+				settings = settings[name] or {},
 				capabilities = require('cmp_nvim_lsp').default_capabilities(),
 			})
 		end,

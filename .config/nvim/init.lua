@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 require('BluePlum.set')
 require('BluePlum.keymap')
 require('BluePlum.neovide')
-require('BluePlum.utility')
 
 require('lazy').setup({
 	-- Plugins
@@ -30,3 +29,4 @@ require('lazy').setup({
 })
 
 require('lsp')
+require('BluePlum.input')

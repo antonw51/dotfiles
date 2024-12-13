@@ -31,14 +31,15 @@ source <(fzf --zsh)
 
 zinit snippet OMZ::lib/git.zsh
 
-[ -f ~/zsh/aliases.sh ] && source ~/zsh/aliases.sh
-[ -f ~/zsh/functions.sh ] && source ~/zsh/functions.sh
 [ -f ~/zsh/prompt.sh ] && source ~/zsh/prompt.sh
 [ -f ~/zsh/completion.sh ] && source ~/zsh/completion.sh
 
 
+# [ -f ~/zsh/aliases.sh ] && source ~/zsh/aliases.sh
+# [ -f ~/zsh/functions.sh ] && source ~/zsh/functions.sh
 # Path
-PATH+=":/home/anton/Rider/bin"
+# PATH+=":/home/anton/Rider/bin"
+# PATH+=":/home/anton/.cargo/bin"
 
 zinit ice wait'!0'
 
@@ -49,3 +50,4 @@ zinit ice wait'!0'
 
 # Created by `pipx` on 2024-08-28 16:28:46
 export PATH="$PATH:/home/anton/.local/bin"
+. "/home/anton/.deno/env"

@@ -35,9 +35,10 @@ vim.keymap.set(
 
 -- Help
 vim.cmd.cnoreabbrev('h vert h')
+vim.keymap.set('n', '<leader>h', ':h <C-r><C-w><CR>')
 
 -- Windows
-vim.keymap.set('n', '<leader>k', function()
+vim.keymap.set('n', '<leader>q', function()
 	if vim.bo.modified then
 		if Confirm('Buffer has unsaved changes; write?') then
 			vim.cmd.write()
@@ -51,13 +52,7 @@ vim.keymap.set('n', '<leader>k', function()
 end)
 
 -- Comp mode
-vim.keymap.set('n', '<leader>s', function() -- s: start
-	local command = Input('Enter compilation command > ', vim.g.last_compile_command)
-	if command then
-		vim.g.last_compile_command = command
-		vim.cmd.Compile(command)
-	end
-end)
+vim.keymap.set('n', '<leader>c<CR>', ':Compile<CR>')
+vim.keymap.set('n', '<leader>cs', ':CompileInterrupt<CR>')
 
 vim.keymap.set('n', '<leader>E', ':NextError<CR>')
-vim.keymap.set('n', '<leader>S', ':Recompile<CR>')

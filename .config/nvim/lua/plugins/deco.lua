@@ -18,4 +18,10 @@ return {
 			vim.api.nvim_set_hl(0, 'MarkviewLayer', { fg = '#2a2a2a', bg = '#373737' })
 		end,
 	},
+	{
+		'sphamba/smear-cursor.nvim',
+		opts = {
+			time_interval = 10,
+		},
+	},
 }

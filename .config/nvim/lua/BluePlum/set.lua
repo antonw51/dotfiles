@@ -38,3 +38,7 @@ vim.api.nvim_create_autocmd('FileType', {
 	pattern = 'help',
 	command = 'setlocal linebreak',
 })
+
+-- Search
+vim.opt.hlsearch = false
+vim.opt.incsearch = true

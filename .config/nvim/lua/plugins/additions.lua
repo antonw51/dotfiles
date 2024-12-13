@@ -6,9 +6,7 @@ return {
 			':IncRename ',
 		} },
 		config = function()
-			require('inc_rename').setup({
-				input_buffer_type = 'dressing',
-			})
+			require('inc_rename').setup({})
 		end,
 	},
 	{
