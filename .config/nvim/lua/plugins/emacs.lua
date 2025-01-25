@@ -1,6 +1,7 @@
 return {
 	{
 		'ej-shafran/compile-mode.nvim',
+		enabled = false,
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'm00qek/baleia.nvim',

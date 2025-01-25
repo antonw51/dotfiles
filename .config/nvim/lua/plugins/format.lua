@@ -2,6 +2,7 @@ return {
 	{
 		'tjex/formatter.nvim',
 		branch = 'fix-305-index-out-of-bounds',
+		event = 'BufWritePost',
 		config = function()
 			local util = require('formatter.util')
 
@@ -47,6 +48,15 @@ return {
 					scss = {
 						prettier,
 					},
+					rust = {
+						function()
+							return {
+								exe = 'rustfmt',
+								args = {},
+								stdin = false,
+							}
+						end,
+					},
 
 					lua = {
 						function()
@@ -84,7 +94,7 @@ return {
 			})
 			autocmd('BufWritePost', {
 				group = '__formatter__',
-				command = ':FormatWrite',
+				command = ':FormatWriteLock',
 			})
 		end,
 	},

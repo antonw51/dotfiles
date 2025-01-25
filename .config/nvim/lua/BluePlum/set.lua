@@ -17,7 +17,7 @@ vim.g.mapleader = ' '
 
 -- Terminal
 vim.g.termguicolors = true
-vim.g.terminal_emulator = 'kitty'
+vim.opt.shell = '/bin/fish'
 
 -- LSP
 vim.lsp.inlay_hint.enable()
@@ -39,6 +39,11 @@ vim.api.nvim_create_autocmd('FileType', {
 	command = 'setlocal linebreak',
 })
 
+vim.cmd.cnoreabbrev('grep', 'Grepper')
+
 -- Search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+-- Make dotfile navigation bareble
+vim.api.nvim_create_user_command('Dot', 'edit ~/.config/nvim', {})
