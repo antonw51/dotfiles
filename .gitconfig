@@ -1,0 +1,37 @@
+[safe]
+	directory = /yay
+[credential]
+	credentialStore = gpg
+	guiPrompt = false
+	helper = 
+	helper = /usr/bin/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[color]
+	status = always
+	branch = always
+	diff = always
+	interactive = always
+[user]
+	email = aligator.h0spital.e@gmail.com
+	name = Anton
+[core]
+	editor = nvim
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	ref = show -s --pretty=reference
+	lg = !max_length_dr=$(git log --format='%ar ' | wc -L) \
+		&& max_length=$(git log --format='%s ' | wc -L) \
+		&& git log --graph --abbrev-commit --decorate \
+		--format='%C(bold blue)%h%C(reset) - %C(bold green)%-%<('\"$max_length_dr\"')%ar:%C(reset)'\" \
+\"'%C(white)%<('\"$max_length\"')%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'

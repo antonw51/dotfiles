@@ -47,3 +47,18 @@ vim.opt.incsearch = true
 
 -- Make dotfile navigation bareble
 vim.api.nvim_create_user_command('Dot', 'edit ~/.config/nvim', {})
+
+-- Git
+vim.api.nvim_create_user_command('Glog', function()
+	local args = {
+		'log',
+		'--graph',
+		'--abbrev-commit',
+		'--decorate',
+	}
+	local str = ''
+	for _, arg in pairs(args) do
+		str = str .. ' ' .. arg
+	end
+	vim.cmd.Git(str)
+end, {})
