@@ -11,7 +11,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Monaco 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -41,10 +41,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-# set $up l
-# set $down k
-# set $left j
-# set $right semicolon
+set $up Up
+set $down Down
+set $left Left
+set $right Right
 
 # Use caps
 exec setxkbmap -option caps:super
@@ -58,10 +58,10 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec i3-sensible-terminal
 
 # start an app
-bindsym $mod+n exec kitty -- fzf-launcher && exit
+bindsym $mod+n exec "rofi -show combi -modes combi -combi-modes drun,run -combi-display-format {text}"
 
 # kill focused window
 bindsym $mod+q kill
@@ -83,27 +83,15 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
 # move workspace
-bindsym $mod+Ctrl+Right move workspace to output right
-bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+$right move workspace to output right
+bindsym $mod+Ctrl+$left move workspace to output left
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -222,8 +210,10 @@ bar {
 # exec --no-startup-id feh --bg-scale /home/anton/bg.png
 # exec --no-startup-id mpv wallpaper.mp4 --loop --no-audio --no-media-controls
 # exec --no-startup-id xinwrap -g 1920x1080 -ni -s -nf -b -fs -- mpv -wid WID wallpaper.mp4 --loop --no-audio --no-media-controls
-exec --no-startup-id xwinwrap -g 1920x1080 -s -b -fdt -ni -sp -ov -- mpv wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan
-exec --no-startup-id xwinwrap -g 1920x1080+1920 -s -b -fdt -ni -sp -ov -- mpv wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan
+# exec --no-startup-id xwinwrap -g 1920x1080 -s -b -fdt -ni -sp -ov -- mpv wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan
+# exec --no-startup-id xwinwrap -g 1920x1080+1920 -s -b -fdt -ni -sp -ov -- mpv wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan
+exec --no-startup-id xwinwrap -g 1920x1080 -s -b -fdt -ni -sp -ov -nf -un -- mpv ~/wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan --vo=gpu-next --framedrop=vo --profile=low-latency --hwdec=auto --no-osc --no-input-default-bindings --no-input-cursor
+exec --no-startup-id xwinwrap -g 1920x1080+1920 -s -b -fdt -ni -sp -ov -nf -un -- mpv ~/wallpaper.mp4 -wid WID --loop --no-audio --gpu-api=vulkan --vo=gpu-next --framedrop=vo --profile=low-latency --hwdec=auto --no-osc --no-input-default-bindings --no-input-cursor
 
 exec --no-startup-id ~/.config/i3/startup.sh
 

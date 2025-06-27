@@ -1,0 +1,8 @@
+configuration {
+	font: "JetBrains Mono 12";
+	entry {
+		max-history: 30;
+	}
+}
+
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
