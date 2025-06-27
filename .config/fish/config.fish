@@ -3,6 +3,8 @@ set fish_greeting '( .-.)'
 set PI 3.141592653589
 set E 2.718281828459
 
+fish_vi_key_bindings
+
 set _TEMP /tmp/anton/
 
 if not test -d $_TEMP
