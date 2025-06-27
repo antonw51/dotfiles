@@ -1,7 +1,6 @@
 return {
 	{
-		'tjex/formatter.nvim',
-		branch = 'fix-305-index-out-of-bounds',
+		'mhartington/formatter.nvim',
 		event = 'BufWritePost',
 		config = function()
 			local util = require('formatter.util')

@@ -10,9 +10,9 @@ return {
 					require('telescope.builtin').find_files({ show_hidden = true })
 				end,
 			},
-			{ '<leader>fs', require('telescope.builtin').live_grep },
-			{ '<leader>bb', require('telescope.builtin').buffers },
-		},
+			{ '<leader>fs', function() require('telescope.builtin').live_grep() end },
+			{ '<leader>bb', function() require('telescope.builtin').buffers() end },
+		}
 	},
 
 	-- Oil
