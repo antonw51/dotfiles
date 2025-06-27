@@ -15,6 +15,7 @@
 [user]
 	email = aligator.h0spital.e@gmail.com
 	name = Anton
+	signingkey = 0AD27113ADEB3016
 [core]
 	editor = nvim
 [push]
@@ -28,6 +29,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "https://github.com/"]
+    insteadOf = gh:
+[url "https://github.com/antonw51/"]
+    insteadOf = my:
+[url "https://github.com/zync-chat/"]
+    insteadOf = zync:
 [alias]
 	ref = show -s --pretty=reference
 	lg = !max_length_dr=$(git log --format='%ar ' | wc -L) \
