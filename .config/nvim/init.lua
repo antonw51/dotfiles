@@ -28,5 +28,4 @@ require('lazy').setup({
 	change_detection = { notify = false },
 })
 
-require('lsp')
 require('BluePlum.input')
