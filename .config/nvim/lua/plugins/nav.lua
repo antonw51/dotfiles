@@ -10,9 +10,19 @@ return {
 					require('telescope.builtin').find_files({ show_hidden = true })
 				end,
 			},
-			{ '<leader>fs', function() require('telescope.builtin').live_grep() end },
-			{ '<leader>bb', function() require('telescope.builtin').buffers() end },
-		}
+			{
+				'<leader>fs',
+				function()
+					require('telescope.builtin').live_grep()
+				end,
+			},
+			{
+				'<leader>bb',
+				function()
+					require('telescope.builtin').buffers()
+				end,
+			},
+		},
 	},
 
 	-- Oil
@@ -31,6 +41,18 @@ return {
 				function()
 					vim.cmd('Oil')
 				end,
+			},
+		},
+	},
+	{
+		'Kaiser-Yang/flash.nvim',
+		branch = 'develop',
+		event = 'VeryLazy',
+		opts = {
+			modes = {
+				char = {
+					multi_line = false,
+				},
 			},
 		},
 	},
