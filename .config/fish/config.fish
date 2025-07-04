@@ -11,6 +11,8 @@ if not test -d $_TEMP
     mkdir -p $_TEMP
 end
 
+set -x GPG_TTY $(tty)
+
 source ~/.config/fish/alias.fish
 source ~/.config/fish/prompt.fish
 

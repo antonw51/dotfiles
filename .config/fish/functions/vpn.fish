@@ -54,7 +54,7 @@ function vpn
             return 0
         end
 
-        if wg-quick up $_path
+        if sudo wg-quick up $_path
             echo "true" > "$_TEMP/vpn-status"
             if not $_silent
                 echo "Successfully enabled."
@@ -71,7 +71,7 @@ function vpn
             return 0
         end
 
-        if wg-quick down $_path
+        if sudo wg-quick down $_path
             echo "false" > "$_TEMP/vpn-status"
             if not $_silent
                 echo "Successfully disabled."
