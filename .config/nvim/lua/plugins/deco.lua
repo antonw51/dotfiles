@@ -21,9 +21,12 @@ return {
 	{
 		'sphamba/smear-cursor.nvim',
 		opts = {
-			time_interval = 10,
+			time_interval = 17,
+			anticipation = 0,
+			damping = 0.8,
+
+			cursor_color = '#b7bcb9',
 			legacy_computing_symbols_support = true,
-			cursor_color = '#fcdc34',
 		},
 	},
 }
