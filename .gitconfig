@@ -3,10 +3,6 @@
 [credential]
 	credentialStore = gpg
 	guiPrompt = false
-	helper = 
-	helper = /usr/bin/git-credential-manager
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [color]
 	status = always
 	branch = always
@@ -35,6 +31,12 @@
     insteadOf = my:
 [url "https://github.com/zync-chat/"]
     insteadOf = zync:
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
 [alias]
 	ref = show -s --pretty=reference
 	lg = !max_length_dr=$(git log --format='%ar ' | wc -L) \
