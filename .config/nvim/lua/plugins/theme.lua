@@ -1,47 +1,41 @@
 return {
 	{
-		'blazkowolf/gruber-darker.nvim',
-		priority = 999,
-		config = function()
-			vim.cmd.colorscheme('gruber-darker')
-		end,
-		enabled = false,
-	},
-	{
 		'nyoom-engineering/oxocarbon.nvim',
 		priority = 999,
 		config = function()
 			vim.cmd.colorscheme('oxocarbon')
 
-			local function hi(c, link)
-				vim.api.nvim_set_hl(0, 'BlinkCmpKind' .. c, { link = link })
-			end
+			local groups = {
+				Text = 'Identifier',
+				Method = '@function.builtin',
+				Function = 'Function',
+				Constructor = '@character',
+				Field = '@property',
+				Variable = '@label',
+				Class = 'Todo',
+				Interface = 'Type',
+				Module = 'Macro',
+				Property = '@property',
+				Unit = 'Type',
+				Value = 'Number',
+				Enum = 'String',
+				Keyword = 'Identifier',
+				Snippet = 'Identifier',
+				Color = 'Identifier',
+				File = 'Identifier',
+				Folder = 'identifier',
+				Reference = 'Identifier',
+				EnumMember = 'String',
+				Constant = '@constant.builtin',
+				Struct = 'Type',
+				Event = '@constant',
+				Operator = 'Structure',
+				TypeParameter = 'Type',
+			}
 
-			hi('Text', 'Identifier')
-			hi('Method', '@function.builtin')
-			hi('Function', 'Function')
-			hi('Constructor', '@character')
-			hi('Field', '@property')
-			hi('Variable', '@label')
-			hi('Class', 'Todo')
-			hi('Interface', 'Type')
-			hi('Module', 'Macro')
-			hi('Property', '@property')
-			hi('Unit', 'Type')
-			hi('Value', 'Number')
-			hi('Enum', 'String')
-			hi('Keyword', 'Identifier')
-			hi('Snippet', 'Identifier')
-			hi('Color', 'Identifier')
-			hi('File', 'Identifier')
-			hi('Folder', 'identifier')
-			hi('Reference', 'Identifier')
-			hi('EnumMember', 'String')
-			hi('Constant', '@constant.builtin')
-			hi('Struct', 'Type')
-			hi('Event', '@constant')
-			hi('Operator', 'Structure')
-			hi('TypeParameter', 'Type')
+			for key, value in pairs(groups) do
+				vim.api.nvim_set_hl(0, 'BlinkCmpKind' .. key, { link = value })
+			end
 
 			vim.api.nvim_set_hl(0, 'BlinkCmpMenuSelection', { link = 'IncSearch' })
 		end,

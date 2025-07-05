@@ -1,14 +1,4 @@
-local blink_methods = {
-	icon = function(ctx)
-		local icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
-		return icon
-	end,
-	highlight = function(ctx)
-		local _, hi, _ = require('mini.icons').get('lsp', ctx.kind)
-		vim.print(hi)
-		return hi
-	end,
-}
+local common = require('BluePlum.lazy')
 
 return {
 	-- Mason
@@ -20,10 +10,10 @@ return {
 			ensure_installed = { 'lua_ls', 'rust_analyzer' },
 		},
 		config = function(lazy)
-			local mlspconfig = require('mason-lspconfig')
+			local mason_lspconfig = require('mason-lspconfig')
 
-			mlspconfig.setup(lazy.opts)
-			mlspconfig.setup_handlers({
+			mason_lspconfig.setup(lazy.opts)
+			mason_lspconfig.setup_handlers({
 				vim.lsp.enable,
 			})
 		end,
@@ -34,9 +24,7 @@ return {
 
 	{
 		'Saghen/blink.cmp',
-		dependencies = {
-			'echasnovski/mini.icons',
-		},
+		dependencies = { common.icons },
 		version = '1.*',
 		build = 'cargo build --release',
 		opts = {
@@ -67,7 +55,10 @@ return {
 						columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
 						components = {
 							kind_icon = {
-								text = blink_methods.icon,
+								text = function(ctx)
+									local icon, _, _ = common.icons_require().get('lsp', ctx.kind)
+									return icon
+								end,
 							},
 							kind = {
 								text = function(ctx)

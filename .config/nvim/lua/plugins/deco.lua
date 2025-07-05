@@ -1,22 +1,22 @@
+local common = require('BluePlum.lazy')
+
 return {
-	{ 'nvim-tree/nvim-web-devicons' },
-	{ 'stevearc/dressing.nvim', opts = {} },
+	{ common.icons, opts = {} },
 	{
 		'folke/todo-comments.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			require('todo-comments').setup()
-		end,
+		opts = {},
+		event = common.event.BufWinEnter,
 	},
-	{ 'norcalli/nvim-colorizer.lua', opts = {} },
 	{
 		'OXY2DEV/markview.nvim',
-		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+		dependencies = { 'nvim-treesitter/nvim-treesitter', common.icons },
 		ft = 'markdown',
-		config = function()
-			require('markview')
-			vim.api.nvim_set_hl(0, 'MarkviewLayer', { fg = '#2a2a2a', bg = '#373737' })
-		end,
+		opts = {
+			preview = {
+				icon_provider = 'mini',
+			},
+		},
 	},
 	{
 		'sphamba/smear-cursor.nvim',

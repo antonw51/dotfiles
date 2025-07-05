@@ -29,4 +29,36 @@ function M.bootstrap()
 	return require('lazy')
 end
 
+M.icons = 'echasnovski/mini.icons'
+M.icons_require = function()
+	return require('mini.icons')
+end
+
+--- @enum PlenaryModule
+local _ = {
+	async = 'async',
+	async_lib = 'async_lib',
+	job = 'job',
+	path = 'path',
+	scandir = 'scandir',
+	context_manager = 'context_manager',
+	test_harness = 'test_harness',
+	filetype = 'filetype',
+	strings = 'strings',
+}
+
+--- @param module PlenaryModule
+M.plenary_require = function(module)
+	return require('plenary.' .. module)
+end
+M.plenary = 'nvim-lua/plenary.nvim'
+
+--- @enum
+M.event = {
+	BufEnter = 'BufEnter',
+	BufWinEnter = 'BufWinEnter',
+	BufWritePost = 'BufWritePost',
+	VeryLazy = 'VeryLazy',
+}
+
 return M

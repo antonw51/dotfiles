@@ -1,97 +1,74 @@
+local common = require('BluePlum.lazy')
+
+---@param exe string
+---@param args { [number]: string, path: boolean? }
+local function formatter(exe, args)
+	return {
+		function()
+			local argv = {}
+
+			for _, val in ipairs(args) do
+				table.insert(argv, val)
+			end
+
+			if not args.path == false then
+				table.insert(argv, vim.fn.shellescape(vim.api.nvim_buf_get_name(0)))
+			end
+
+			return {
+				exe = exe,
+				args = argv,
+				stdin = true,
+			}
+		end,
+	}
+end
+
+local prettier = formatter('prettier', {
+	'--config-precedence prefer-file',
+	'--single-quote',
+	'--use-tabs',
+	'--trailing-comma es5',
+	'--bracket-same-line',
+	'--stdin-filepath',
+})
+
 return {
 	{
 		'mhartington/formatter.nvim',
-		event = 'BufWritePost',
-		config = function()
-			local util = require('formatter.util')
+		event = common.event.BufWritePost,
+		opts = {
+			filetype = {
+				javascript = prettier,
+				typescript = prettier,
+				markdown = prettier,
+				css = prettier,
+				json = prettier,
+				html = prettier,
+				scss = prettier,
+				rust = formatter('rustfmt', { path = false }),
+				lua = formatter('stylua', {
+					'--indent-type Tabs',
+					'--line-endings Unix',
+					'--quote-style AutoPreferSingle',
+					'--column-width' .. ' ' .. vim.o.columns,
+					'-',
+				}),
 
-			local function prettier()
-				return {
-					exe = 'prettier',
-					args = {
-						'--config-precedence',
-						'prefer-file',
-						'--single-quote',
-						'--use-tabs',
-						'--trailing-comma',
-						'es5',
-						'--bracket-same-line',
-						'--insert-pragma',
-						'--stdin-filepath',
-						vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
-					},
-					stdin = true,
-				}
-			end
-
-			require('formatter').setup({
-				filetype = {
-					javascript = {
-						prettier,
-					},
-					typescript = {
-						prettier,
-					},
-					markdown = {
-						prettier,
-					},
-					css = {
-						prettier,
-					},
-					json = {
-						prettier,
-					},
-					html = {
-						prettier,
-					},
-					scss = {
-						prettier,
-					},
-					rust = {
-						function()
-							return {
-								exe = 'rustfmt',
-								args = {},
-								stdin = false,
-							}
-						end,
-					},
-
-					lua = {
-						function()
-							return {
-								exe = 'stylua',
-								args = {
-									'--indent-type',
-									'Tabs',
-									'--line-endings',
-									'Unix',
-									'--quote-style',
-									'AutoPreferSingle',
-									'--column-width',
-									vim.api.nvim_command_output('echo &columns'),
-									'-',
-								},
-								stdin = true,
-							}
-						end,
-					},
-					['*'] = {
-						function()
-							if vim.lsp.buf.formatting then
-								vim.lsp.buf.format()
-							end
-						end,
-					},
+				['*'] = {
+					function()
+						if vim.lsp.buf.formatting then
+							vim.lsp.buf.format()
+						end
+					end,
 				},
-			})
+			},
+		},
+		config = function(lazy)
+			require('formatter').setup(lazy.opts)
 
-			local augroup = vim.api.nvim_create_augroup
-			local autocmd = vim.api.nvim_create_autocmd
-			augroup('__formatter__', {
-				clear = true,
-			})
-			autocmd('BufWritePost', {
+			vim.api.nvim_create_augroup('__formatter__', { clear = true })
+			vim.api.nvim_create_autocmd(common.event.BufWritePost, {
 				group = '__formatter__',
 				command = ':FormatWriteLock',
 			})
