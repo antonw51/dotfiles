@@ -1,45 +1,47 @@
-<!-- @format -->
+# antonw51's dotfiles
 
-# Anton's dotfiles
+These are my personal configuration files as I use for Arch, i3, Neovim, Fish
+shell, and more. There are various prerequsites required for this but those
+won't be listed.
 
-These are my dotfiles for zsh, i3, neovim, and kitty. All stored using the GNU stow applet.
+## Stow
 
-To install these dotfiles and use them as your own, simply install GNU stow:
+To make it as easy as possible to install these configuration files, it is
+recommended that you use GNU Stow, which is a simple utility that links your files
+upwards. To use it, install `stow` from your package manager (like `pacman`):
 
 ```bash
 $ sudo pacman -S stow
 ```
 
-clone this repository to your home directory:
+Clone this repository to a convenient spot:
 
 ```bash
-$ git clone --depth=1 https://github.com/antonw51/dotfiles ~/dotfiles
+$ git clone --depth=1 https://github.com/antonw51/dotfiles ~/.dotfiles
+$ cd ~/.dotfiles
 ```
 
-then use the `stow` command:
+> [!IMPORTANT]
+> Before stowing, it is recommended to run the `prestow.fish` script so that
+> `stow` doesn't link directories such as your entire `.config` folder to
+> this directory, instead only files.
+>
+> This simple script will create empty (unlinked) directories where stow
+> expects to force it into linking files only. Remember that any changes made
+> even to your home configratuion will be reflected in this repo after linking:
+>
+> ```bash
+> $ ./prestow.fish
+> ```
+ 
+Then finally to link all of the necessary configs, run `stow` as such:
 
 ```bash
-$ stow ~/dotfiles
+$ stow .
 ```
 
-## Oh-my-zsh
-
-The zsh config present here relies on oh-my-zsh, you can install that with curl:
-
-```bash
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-Then install the dependencies:
-
-- zsh-syntax-highlighting:
-
-```bash
-$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-- zsh-completion:
-
-```bash
-$ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
-```
+> [!NOTE]
+> Stow will have problems if you already have any conflicting configuration
+> files as found here. Currently the easiest solution to this is to remove your
+> pre-existing files. Alternatively you can use the `--adopt` option with stow,
+> and then reset this repository to its previous state using `git`.
