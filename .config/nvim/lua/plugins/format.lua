@@ -11,7 +11,7 @@ local function formatter(exe, args)
 				table.insert(argv, val)
 			end
 
-			if not args.path == false then
+			if args.path ~= false then
 				table.insert(argv, vim.fn.shellescape(vim.api.nvim_buf_get_name(0)))
 			end
 

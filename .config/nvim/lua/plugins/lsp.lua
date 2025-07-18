@@ -7,7 +7,7 @@ return {
 		'mason-org/mason-lspconfig.nvim',
 		version = '1.*',
 		opts = {
-			ensure_installed = { 'lua_ls', 'rust_analyzer' },
+			ensure_installed = { 'rust_analyzer' },
 		},
 		config = function(lazy)
 			local mason_lspconfig = require('mason-lspconfig')
@@ -21,7 +21,6 @@ return {
 			'mason-org/mason.nvim',
 		},
 	},
-
 	{
 		'Saghen/blink.cmp',
 		dependencies = { common.icons },
