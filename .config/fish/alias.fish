@@ -23,3 +23,5 @@ alias wgoff 'echo "$(set_color red)You changed this dimwit, use \'vpn\' instead"
 #alias gref 'git show -s --pretty=reference '
 alias glog 'git lg'
 alias gref 'git ref'
+
+alias disable_webkit 'set -gx WEBKIT_DISABLE_DMABUF_RENDERER 1; set -gx WEBKIT_DISABLE_COMPOSITING_MODE 1'
